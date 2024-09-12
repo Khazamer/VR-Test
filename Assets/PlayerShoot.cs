@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject BulletTemplate;
-    public float shootPower = 10000f;
+    public float shootPower = 500;
 
     public InputActionReference trigger;
 
@@ -21,5 +21,7 @@ public class PlayerShoot : MonoBehaviour
     {
         GameObject newBullet = Instantiate(BulletTemplate, transform.position, transform.rotation);
         newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
+
+        Destroy(newBullet, 5);
     }
 }
