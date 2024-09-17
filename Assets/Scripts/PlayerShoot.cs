@@ -8,6 +8,8 @@ public class PlayerShoot : MonoBehaviour
     public GameObject BulletTemplate;
     public float shootPower = 500;
 
+    float tempTime;
+
     public InputActionReference trigger;
 
     // Start is called before the first frame update
@@ -19,8 +21,12 @@ public class PlayerShoot : MonoBehaviour
     // Update is called once per frame
     void Shoot(InputAction.CallbackContext _)
     {
+        //Remeber this and see if it works
+        //tempTime = Time.timeScale;
+        //Time.timeScale = 1F;
         GameObject newBullet = Instantiate(BulletTemplate, transform.position, transform.rotation);
         newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
+        //Time.timeScale = tempTime;
 
         Destroy(newBullet, 5);
     }

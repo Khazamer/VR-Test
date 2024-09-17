@@ -20,11 +20,11 @@ public class SlowTime : MonoBehaviour
     public Vector3 posLeft;
     public Vector3 posRight;
 
-    float minSpeed = 0.05f;
+    float minSpeed = 0.1f;
 
     public float factor = 200f;
 
-    //float smoothSpeed = 2f;
+    float smoothSpeed = 2f;
 
     float distance;
 
@@ -36,12 +36,16 @@ public class SlowTime : MonoBehaviour
 
     //public float maxDistance = 0.005f;
 
+    float startDeltaTime;
+
     // Start is called before the first frame update
     void Start()
     {
         //trigger.action.performed
         prevLeft = leftHand.transform.position;
         prevRight = rightHand.transform.position;
+
+        startDeltaTime = Time.fixedDeltaTime;
     }
 
     // Update is called once per frame
@@ -72,13 +76,24 @@ public class SlowTime : MonoBehaviour
         //float targetTimeScale = Mathf.Clamp(scaledDistance, minSpeed, 1f);
 
         //Smooth out issues
-        //Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, Time.deltaTime * smoothSpeed);
+        /*
+        if(scaledDistance < 0.1f) {
+            Time.timeScale = 0.1f;
+        }
+        else {
+            Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, Time.deltaTime * smoothSpeed);
+        }
+        */
 
         //Old stuff
         //timeCheck = math.max(scaledDistance,minSpeed);
         //Time.timeScale = math.min(timeCheck,1);
+
+        //Best code
         Time.timeScale = Mathf.Clamp(scaledDistance, minSpeed, 1f);
-        Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        //Time.fixedDeltaTime = startDeltaTime * Time.timeScale;
+        
+        //Time.fixedDeltaTime = 0.02F * Time.timeScale;
         
         // 1 hand
         /*
