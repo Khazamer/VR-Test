@@ -24,9 +24,13 @@ public class SlowTime : MonoBehaviour
 
     public float factor = 200f;
 
+    //float smoothSpeed = 2f;
+
     float distance;
 
     float scaledDistance;
+
+    float targetTimeScale;
 
     float timeCheck;
 
@@ -65,9 +69,16 @@ public class SlowTime : MonoBehaviour
 
         scaledDistance = distance * factor;
 
-        timeCheck = math.max(scaledDistance,minSpeed);
-        
-        Time.timeScale = math.min(timeCheck,1);
+        //float targetTimeScale = Mathf.Clamp(scaledDistance, minSpeed, 1f);
+
+        //Smooth out issues
+        //Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, Time.deltaTime * smoothSpeed);
+
+        //Old stuff
+        //timeCheck = math.max(scaledDistance,minSpeed);
+        //Time.timeScale = math.min(timeCheck,1);
+        Time.timeScale = Mathf.Clamp(scaledDistance, minSpeed, 1f);
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
         
         // 1 hand
         /*
