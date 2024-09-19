@@ -93,7 +93,7 @@ public class SlowTime : MonoBehaviour
         Time.timeScale = Mathf.Clamp(scaledDistance, minSpeed, 1f);
         //Time.fixedDeltaTime = startDeltaTime * Time.timeScale;
         
-        //Time.fixedDeltaTime = 0.02F * Time.timeScale;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
         
         // 1 hand
         /*

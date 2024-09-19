@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
     public GameObject BulletTemplate;
-    public float shootPower = 500;
+    float shootPower = 20f;
 
     float tempTime;
 
@@ -25,7 +25,7 @@ public class PlayerShoot : MonoBehaviour
         //tempTime = Time.timeScale;
         //Time.timeScale = 1F;
         GameObject newBullet = Instantiate(BulletTemplate, transform.position, transform.rotation);
-        newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower);
+        newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower * (1/Time.deltaTime)); //(1/Time.timeScale)
         //Time.timeScale = tempTime;
 
         Destroy(newBullet, 5);
