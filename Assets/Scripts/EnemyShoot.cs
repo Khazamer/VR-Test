@@ -25,7 +25,7 @@ public class EnemyShoot : MonoBehaviour
         //shotTime -= 0.05f;
         if (shotTime <= 0.0f) {
             transform.LookAt(playerTarget.transform);
-            GameObject newBullet = Instantiate(BulletTemplate, transform.position, transform.rotation);
+            GameObject newBullet = Instantiate(BulletTemplate, transform.position + (transform.forward  * 0.7f), transform.rotation);
             newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower * (1/Time.deltaTime));
             Destroy(newBullet, 5);
 

@@ -24,7 +24,7 @@ public class PlayerShoot : MonoBehaviour
         //Remeber this and see if it works
         //tempTime = Time.timeScale;
         //Time.timeScale = 1F;
-        GameObject newBullet = Instantiate(BulletTemplate, transform.position, transform.rotation);
+        GameObject newBullet = Instantiate(BulletTemplate, transform.position + (transform.forward * 0.7f), transform.rotation);
         newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower * (1/Time.deltaTime)); //(1/Time.timeScale)
         //Time.timeScale = tempTime;
 
