@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,13 +10,20 @@ public class EnemyAI : MonoBehaviour
 
     private GameObject playerTarget;
 
+    private Boolean addSpeed = true;
+
     // Update is called once per frame
     void Update()
     {
         // Only move forward if there is a player target
         if (playerTarget != null) {
+            //GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             transform.LookAt(playerTarget.transform.position);
-            transform.position += transform.forward * Time.deltaTime * speed;
+            //transform.position += transform.forward * Time.deltaTime * speed;
+            if (addSpeed == true) {
+                transform.position += transform.forward * Time.deltaTime * speed;
+                addSpeed = false;
+            }
         }
     }
 
