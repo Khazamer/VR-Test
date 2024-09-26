@@ -19,11 +19,13 @@ public class EnemyAI : MonoBehaviour
         if (playerTarget != null) {
             //GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             transform.LookAt(playerTarget.transform.position);
-            //transform.position += transform.forward * Time.deltaTime * speed;
+            transform.position += transform.forward * Time.deltaTime * speed; //issue with collision but idk why
+            /*
             if (addSpeed == true) {
                 transform.position += transform.forward * Time.deltaTime * speed;
                 addSpeed = false;
             }
+            */
         }
     }
 
