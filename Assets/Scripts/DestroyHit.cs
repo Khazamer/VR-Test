@@ -6,7 +6,9 @@ public class DestroyHit : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
-        Destroy(gameObject);
-        Destroy(other.gameObject);
+        if (other.gameObject.tag == "PlayerBullet") {
+			Destroy(gameObject);
+            Destroy(other.gameObject);
+		}
     }
 }
