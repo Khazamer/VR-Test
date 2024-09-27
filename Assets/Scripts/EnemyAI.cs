@@ -12,6 +12,11 @@ public class EnemyAI : MonoBehaviour
 
     private Boolean addSpeed = true;
 
+        // When the player enters the trigger, assign it as a target
+    private void OnTriggerEnter(Collider other) {
+        playerTarget = other.gameObject;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,10 +32,5 @@ public class EnemyAI : MonoBehaviour
             }
             */
         }
-    }
-
-    // When the player enters the trigger, assign it as a target
-    private void OnTriggerEnter(Collider other) {
-        playerTarget = other.gameObject;
     }
 }
