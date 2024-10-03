@@ -35,8 +35,10 @@ public class EnemyShoot : MonoBehaviour
             Destroy(newBullet, 5);
 
             shotTime = rnd.Next(2,5);
-
+            //shotTime = 2f;
             GetComponent<AudioSource>().PlayOneShot(gunShotSFX);
+
+            //Debug.Log("Enemy shooting");
         }
     }
 }
