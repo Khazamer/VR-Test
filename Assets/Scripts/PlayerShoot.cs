@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerShoot : MonoBehaviour
     float tempTime;
 
     public InputActionReference trigger;
+
+    public AudioClip gunShotSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -29,5 +32,7 @@ public class PlayerShoot : MonoBehaviour
         //Time.timeScale = tempTime;
 
         Destroy(newBullet, 5);
+
+        GetComponent<AudioSource>().PlayOneShot(gunShotSFX);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Net.WebSockets;
 //using System.Random;
+using UnityEngine.Audio;
 
 public class EnemyShoot : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyShoot : MonoBehaviour
     float shootPower = 5f;
     float shotTime;
     System.Random rnd = new System.Random();
+
+    public AudioClip gunShotSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,8 @@ public class EnemyShoot : MonoBehaviour
             Destroy(newBullet, 5);
 
             shotTime = rnd.Next(2,5);
+
+            GetComponent<AudioSource>().PlayOneShot(gunShotSFX);
         }
     }
 }
