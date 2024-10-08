@@ -19,6 +19,7 @@ public class TestGameStart : MonoBehaviour
         if (leftTriggerValue > 0.5f && rightTriggerValue > 0.5f) {
             // trigger scene change
             SceneManager.LoadScene("Scenes/MainScene");
+            //SceneManager.LoadScene("Scenes/FightScene");
         }
     }
 }
