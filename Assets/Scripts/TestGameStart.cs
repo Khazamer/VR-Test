@@ -16,10 +16,19 @@ public class TestGameStart : MonoBehaviour
         float leftTriggerValue = triggerLeft.action.ReadValue<float>();
         float rightTriggerValue = triggerRight.action.ReadValue<float>();
 
+        /*
         if (leftTriggerValue > 0.5f && rightTriggerValue > 0.5f) {
             // trigger scene change
+            //SceneManager.LoadScene("Scenes/MainScene");
+            SceneManager.LoadScene("Scenes/FightScene");
+        }
+        */
+
+        if (leftTriggerValue > 0.5f) {
             SceneManager.LoadScene("Scenes/MainScene");
-            //SceneManager.LoadScene("Scenes/FightScene");
+        }
+        if (rightTriggerValue > 0.5f) {
+            SceneManager.LoadScene("Scenes/FightScene");
         }
     }
 }

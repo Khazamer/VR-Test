@@ -150,6 +150,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletTemplate: {fileID: 7258358130805431925, guid: 9671112f2b166d5408b5232dd2f8467a, type: 3}
   playerTarget: {fileID: 0}
+  teleportMask:
+    serializedVersion: 2
+    m_Bits: 8
   gunShotSFX: {fileID: 8300000, guid: dc46d7b1189a2fb4cbeeefdf53c5161a, type: 3}
 --- !u!114 &7052774449968304013
 MonoBehaviour:
@@ -163,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d3afe4d84da564db986d274ac7a5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
 --- !u!82 &2664926403486208413
 AudioSource:
   m_ObjectHideFlags: 0

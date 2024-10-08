@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private float health = 3f;
+    public float health = 3f;
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "PlayerBullet") {
@@ -13,6 +13,9 @@ public class EnemyHealth : MonoBehaviour
             if(health == 0) {
                 Destroy(gameObject);
             }
+        }
+        else if (other.gameObject.tag == "Lightsaber") {
+            Destroy(gameObject);
         }
     }
 }

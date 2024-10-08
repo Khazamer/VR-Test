@@ -18,6 +18,7 @@ public class ReflectScript : MonoBehaviour
                 //rb.velocity = -rb.velocity;
                 // direction of saber code
                 Rigidbody rb = GetComponent<Rigidbody>();
+                rb.velocity = new Vector3(0,0,0);
                 Quaternion saberDirection = collision.gameObject.transform.rotation;
                 //Quaternion ballDirection = Quaternion.Inverse(saberDirection);
                 //rb.transform.rotation = ballDirection;

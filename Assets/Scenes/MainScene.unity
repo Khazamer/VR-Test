@@ -7944,7 +7944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6330362318748269483, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6330362318748269483, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
       propertyPath: gunShotSFX
@@ -7954,6 +7954,10 @@ PrefabInstance:
       propertyPath: playerTarget
       value: 
       objectReference: {fileID: 1413169279}
+    - target: {fileID: 6330362318748269483, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
+      propertyPath: teleportMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11796,7 +11800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6330362318748269483, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6330362318748269483, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
       propertyPath: gunShotSFX
@@ -11806,6 +11810,10 @@ PrefabInstance:
       propertyPath: playerTarget
       value: 
       objectReference: {fileID: 1413169279}
+    - target: {fileID: 6330362318748269483, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
+      propertyPath: teleportMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15578,7 +15586,7 @@ GameObject:
   - component: {fileID: 1413169286}
   m_Layer: 3
   m_Name: PlayerCollider
-  m_TagString: Untagged
+  m_TagString: ShotCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19449,33 +19457,39 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!65 &1742132497
-BoxCollider:
+--- !u!54 &1742132497
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1742132489}
-  m_Material: {fileID: 0}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 1
 --- !u!1 &1745776599
 GameObject:
   m_ObjectHideFlags: 0
@@ -24678,6 +24692,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 403513912}
     m_Modifications:
+    - target: {fileID: 1298174218500203486, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
+      propertyPath: m_TagString
+      value: Damage
+      objectReference: {fileID: 0}
     - target: {fileID: 2637077804495068447, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -24738,6 +24756,10 @@ PrefabInstance:
       propertyPath: playerTarget
       value: 
       objectReference: {fileID: 1413169279}
+    - target: {fileID: 6330362318748269483, guid: 1d27650075a28ff40be579112011fa0b, type: 3}
+      propertyPath: teleportMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
