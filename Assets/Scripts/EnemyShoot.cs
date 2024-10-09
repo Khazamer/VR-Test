@@ -13,6 +13,9 @@ public class EnemyShoot : MonoBehaviour
     float shootPower = 5f;
     float shotTime;
     System.Random rnd = new System.Random();
+
+    [SerializeField]
+    private LayerMask teleportMask;
     public AudioClip gunShotSFX;
 
     // Start is called before the first frame update
@@ -25,56 +28,62 @@ public class EnemyShoot : MonoBehaviour
     void Update()
     {
         shotTime -= Time.deltaTime;
-        //shotTime -= 0.05f;
 
         if (shotTime <= 0.0f) {
             transform.LookAt(playerTarget.transform);
 
-            //RaycastHit hit;
-            //RaycastHit[] hits;
+            bool didHit = checkRaycast();
 
-            /*
-            bool didHit = Physics.Raycast(
-                transform.position,
-                transform.forward,
-                out hit,
-                Mathf.Infinity,
-                teleportMask);
-            */
+            //hits = Physics.RaycastAll(transform.position, transform.forward, distance);
 
-            //hits = Physics.RaycastAll(transform.position, transform.forward, Mathf.Infinity);
+            //bool goodShot = true;
 
-            RaycastHit hit; //see if plant is cuasing issue - otherwise ask peter
-            if (Physics.Raycast(transform.position, transform.forward, out hit)) {
-                if (hit.collider.tag == "ShotCheck") {
-                    GameObject newBullet = Instantiate(BulletTemplate, transform.position + (transform.forward  * 0.7f), transform.rotation);
-                    newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower * (1/Time.deltaTime));
-                    Destroy(newBullet, 5);
-
-                    shotTime = rnd.Next(2,5);
-                    //shotTime = 2f;
-                    GetComponent<AudioSource>().PlayOneShot(gunShotSFX);
-
-                    //Debug.Log("Enemy shooting");
-                }
-                else if (hit.collider.tag == "Damage") {
-                    Destroy(gameObject);
-                }
-            }
-
-            /*
-            if (hits[1].collider.tag == "ShotCheck") {
+            //if (Physics.Raycast(transform.position, transform.forward, out hit, teleportMask)) {
+            if (!didHit) { //see if plant is cuasing issue - otherwise ask peter
+                //Debug.DrawRay(transform.position, transform.forward, Color.green, 3, false); //Stops the shooting for some reason
+                //print("Found object" + hit.collider.tag + " and " + hit.distance);
+                //if (hit.collider.tag == "ShotCheck") {
                 GameObject newBullet = Instantiate(BulletTemplate, transform.position + (transform.forward  * 0.7f), transform.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * shootPower * (1/Time.deltaTime));
                 Destroy(newBullet, 5);
 
-                shotTime = rnd.Next(2,5);
+                //shotTime = rnd.Next(2,5);
                 //shotTime = 2f;
                 GetComponent<AudioSource>().PlayOneShot(gunShotSFX);
 
                 //Debug.Log("Enemy shooting");
+                //}
             }
-            */
+
+            shotTime = rnd.Next(2,5);
         }
+    }
+
+    bool checkRaycast() {
+        //transform.LookAt(playerTarget.transform);
+
+        RaycastHit hit;
+
+        float distance = Vector3.Distance(gameObject.transform.position, playerTarget.transform.position);
+
+        bool didHit = Physics.Raycast(
+            transform.position,
+            transform.forward,
+            out hit,
+            distance,
+            teleportMask);
+
+        //GameObject collidedObject = object.GetObjectFromInstanceID(hit.colliderInstanceID);
+
+        // Debugging - not needed atm
+        /*
+        Debug.Log("Clear");
+        Debug.Log("Hit: " + didHit + " What: " + hit.collider);
+        //Debug.DrawRay(transform.position, transform.forward, Color.green, 3, false);
+        Gizmos.color = Color.green;
+        Gizmos.DrawRay(transform.position, transform.forward);
+        */
+
+        return didHit;
     }
 }
