@@ -5,6 +5,11 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float health = 3f;
+    //public NextLevel nextlevelscript;
+
+    private void start() {
+        //nextlevelscript = FindObjectOfType<NextLevel>();
+    }
     private void OnCollisionEnter(Collision other)
     {   
         /*
@@ -18,10 +23,12 @@ public class EnemyHealth : MonoBehaviour
             Destroy(other.gameObject);
             health = health - 1f;
             if(health == 0) {
+                //nextlevelscript.enemyDead();
                 Destroy(gameObject);
             }
         }
         else if (other.gameObject.tag == "Lightsaber") {
+            //nextlevelscript.enemyDead();
             Destroy(gameObject);
         }
     }
