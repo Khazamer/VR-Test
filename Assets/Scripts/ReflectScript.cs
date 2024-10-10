@@ -20,8 +20,12 @@ public class ReflectScript : MonoBehaviour
                 Rigidbody rb = GetComponent<Rigidbody>();
                 rb.velocity = new Vector3(0,0,0);
                 Quaternion saberDirection = collision.gameObject.transform.rotation;
+                //Vector3 saberDirection = collision.gameObject.transform.forward;
                 //Quaternion ballDirection = Quaternion.Inverse(saberDirection);
                 //rb.transform.rotation = ballDirection;
+                //saberDirection[0] = saberDirection[0] - 90;
+                // May need
+                saberDirection *= Quaternion.Euler(90, 0, 0);
                 rb.transform.rotation = saberDirection;
                 rb.AddForce(transform.forward * reflectSpeedModifier * (1/Time.deltaTime));
                 //rb.AddForce(transform.forward * reflectSpeedModifier);

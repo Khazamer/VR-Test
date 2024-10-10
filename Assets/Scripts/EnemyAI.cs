@@ -10,8 +10,6 @@ public class EnemyAI : MonoBehaviour
 
     private GameObject playerTarget;
 
-    private Boolean addSpeed = true;
-
         // When the player enters the trigger, assign it as a target
     private void OnTriggerEnter(Collider other) {
         playerTarget = other.gameObject;

@@ -7,9 +7,13 @@ public class EnemyHealth : MonoBehaviour
     public float health = 3f;
     private void OnCollisionEnter(Collision other)
     {   
+        /*
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0,0,0);
-        rb.angularVelocity = new Vector3(0,0,0);
+        Rigidbody rb2 = other.gameObject.GetComponent<Rigidbody>();
+        rb2.velocity = new Vector3(0,0,0);
+        */
+        //rb.angularVelocity = new Vector3(0,0,0);
         if (other.gameObject.tag == "PlayerBullet") {
             Destroy(other.gameObject);
             health = health - 1f;
